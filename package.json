@@ -1,14 +1,14 @@
 {
  "name": "@flat/in-app-purchase",
  "description": "In-App-Purchase validation and subscription management for iOS, Android, Amazon, and Windows",
- "version": "1.13.5",
+ "version": "1.13.6",
  "author": {
   "name": "Nobuyori Takahashi",
   "email": "voltrue2@yahoo.com"
  },
  "repository": {
   "type": "git",
-  "url": "https://github.com/FlatIO/in-app-purchase.git"
+  "url": "https://github.com/insthync/nodejs-in-app-purchase.git"
  },
  "dependencies": {
   "fb": "^2.0.0",
