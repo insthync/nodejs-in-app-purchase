@@ -4,48 +4,45 @@ lint:
 
 .PHONY: test
 test:
-	npx mocha test/apple.js -R spec -b --timeout=5000 --path=false
-	npx mocha test/google.js -R spec -b --path=false --pk=false
-	npx mocha test/amazon.js -R spec -b --timeout=5000 --sharedKey=false --path=false
-	npx mocha test/windows.js -R spec -b --timeout=5000 --path=false
+	npm run test:unit
 	#npx mocha test/facebook.js -R spec -b --timeout=5000 --appAccessToken=false --path=false
 
 .PHONY: aptest
 aptest:
-	npx mocha test/apple.js -R spec -b --timeout=5000 --path=false
+	node --require ./test/node-test-shim.js --test test/apple.js
 
 .PHONY: gotest
 gotest:
-	npx mocha test/google.js -R spec -b --path=false --pk=false
+	node --require ./test/node-test-shim.js --test test/google.js
 
 .PHONY: amtest
 amtest:
-	npx mocha test/amazon.js -R spec -b --timeout=5000 --sharedKey=false --path=false
+	node --require ./test/node-test-shim.js --test test/amazon.js
 
 .PHONY: witest
 witest:
-	npx mocha test/windows.js -R spec -b --timeout=5000 --path=false
+	node --require ./test/node-test-shim.js --test test/windows.js
 
 .PHONY: fatest
 witest:
-	npx mocha test/facebook.js -R spec -b --timeout=5000 --appAccessToken=false --path=false
+	node --require ./test/node-test-shim.js --test test/facebook.js
 
 .PHONY: test-apple
 test-apple:
-	npx mocha test/apple.js -R spec -b --timeout=5000 --path=$(path)
+	IAP_TEST_PATH=$(path) node --require ./test/node-test-shim.js --test test/apple.js
 
 .PHONY: test-google
 test-google:
-	npx mocha test/google.js -R spec -b --path=$(path) --pk=$(pk)
+	IAP_TEST_PATH=$(path) IAP_TEST_PK=$(pk) node --require ./test/node-test-shim.js --test test/google.js
 
 .PHONY: test-windows
 test-windows:
-	npx mocha test/windows.js -R spec -b --timeout=5000 --path=$(path)
+	IAP_TEST_PATH=$(path) node --require ./test/node-test-shim.js --test test/windows.js
 
 .PHONY: test-amazon
 test-amazon:
-	npx mocha test/amazon.js -R spec -b --timeout=5000 --sharedKey=$(sharedKey) --path=$(path)
+	IAP_TEST_SHARED_KEY=$(sharedKey) IAP_TEST_PATH=$(path) node --require ./test/node-test-shim.js --test test/amazon.js
 
 .PHONY: test-facebook
 test-facebook:
-	npx mocha test/facebook.js -R spec -b --timeout=5000 --appAccessToken=$(appAccessToken) --path=$(path)
+	IAP_TEST_APP_ACCESS_TOKEN=$(appAccessToken) IAP_TEST_PATH=$(path) node --require ./test/node-test-shim.js --test test/facebook.js

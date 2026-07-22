@@ -1,32 +1,31 @@
 {
- "name": "@flat/in-app-purchase",
+ "name": "@insthync/nodejs-in-app-purchase",
  "description": "In-App-Purchase validation and subscription management for iOS, Android, Amazon, and Windows",
- "version": "1.13.6",
+ "version": "1.14.1",
  "author": {
-  "name": "Nobuyori Takahashi",
-  "email": "voltrue2@yahoo.com"
+  "name": "Nobuyori Takahashi,Ittipon Teerapruettikulchai",
+  "email": "voltrue2@yahoo.com,ittipon.bay@gmail.com"
  },
  "repository": {
   "type": "git",
   "url": "https://github.com/insthync/nodejs-in-app-purchase.git"
  },
  "dependencies": {
-  "fb": "^2.0.0",
-  "jwt-simple": "^0.5.6",
-  "request": "2.88.2",
-  "urlsafe-base64": "^1.0.0",
   "xml-crypto": "6.1.2",
   "@xmldom/xmldom": "0.9.10"
  },
  "devDependencies": {
-  "mocha": "11.7.6",
-  "eslint": "10.4.0"
+  "eslint": "10.7.0"
  },
  "scripts": {
-  "lint": "make lint",
-  "test": "make lint && make test"
+  "lint": "eslint lib index.js",
+  "test": "npm run lint && npm run test:unit",
+  "test:unit": "node --require ./test/node-test-shim.js --test test/fetch.js test/builtins.js && node --require ./test/node-test-shim.js --test --test-name-pattern=parse test/apple.js && node --require ./test/node-test-shim.js --test test/google.js && node --require ./test/node-test-shim.js --test --test-name-pattern=\"Can NOT|Can get an error\" test/windows.js",
+  "test:integration": "node --require ./test/node-test-shim.js --test test/apple.js && node --require ./test/node-test-shim.js --test test/amazon.js && node --require ./test/node-test-shim.js --test test/windows.js"
  },
- "#engine": "node >= 0.10.20",
+ "engines": {
+  "node": ">=22.13.0"
+ },
  "contributors": [],
  "keywords": [
   "Apple",
@@ -43,60 +42,5 @@
   "Validation",
   "IAP"
  ],
- "eslintConfig": {
-  "parserOptions": {
-   "ecmaVersion": 6,
-   "sourceType": "module",
-   "jsx": true
-  },
-  "env": {
-   "node": true,
-   "es6": true,
-   "amd": true,
-   "mocha": true
-  },
-  "rules": {
-   "max-depth": 5,
-   "no-undef": "error",
-   "no-unused-vars": "error",
-   "no-cond-assign": "error",
-   "no-console": "warn",
-   "no-dupe-args": "error",
-   "no-dupe-keys": "error",
-   "no-empty": "error",
-   "no-duplicate-case": "error",
-   "no-func-assign": "error",
-   "no-inner-declarations": "warn",
-   "no-irregular-whitespace": "error",
-   "no-obj-calls": "error",
-   "no-sparse-arrays": "error",
-   "no-unreachable": "error",
-   "no-unsafe-negation": "error",
-   "use-isnan": "error",
-   "valid-typeof": "error",
-   "dot-notation": "warn",
-   "guard-for-in": "off",
-   "no-eval": "error",
-   "no-global-assign": "error",
-   "no-implicit-globals": "error",
-   "no-implied-eval": "error",
-   "no-loop-func": "error",
-   "no-octal": "off",
-   "no-octal-escape": "off",
-   "no-proto": "error",
-   "no-redeclare": "error",
-   "no-restricted-properties": "error",
-   "eqeqeq": "error",
-   "quotes": [
-    "error",
-    "single"
-   ],
-   "curly": "error",
-   "camelcase": "error",
-   "validthis": "off",
-   "bitwise": "off",
-   "semi": "error"
-  }
- },
  "license": "MIT"
 }

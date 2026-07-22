@@ -18,7 +18,7 @@ Thank you for the input [maxs15](https://github.com/maxs15)
 
 ## Required node.js version
 
-`0.12.0 >=`
+Node.js 22.13 or newer.
 
 ## Online Demo and Documention
 
@@ -38,8 +38,11 @@ The module supports both Promise and callbacks.
 var iap = require('in-app-purchase');
 iap.config({
 
-    /* Configurations for HTTP request */
-    requestDefaults: { /* Please refer to the request module documentation here: https://www.npmjs.com/package/request#requestoptions-callback */ },
+    /* Defaults for the native fetch-based HTTP client */
+    requestDefaults: {
+        timeout: 10000,
+        headers: { 'user-agent': 'my-iap-service' }
+    },
 
     /* Configurations for Amazon Store */
     amazonAPIVersion: 2, // tells the module to use API version 2
@@ -437,5 +440,11 @@ in-app-purchase module supports the following algorithms:
 
 ## HTTP Request Configurations
 
-The module supports the same configurations as [npm request module] (https://www.npmjs.com/package/request#requestoptions-callback)
+HTTP calls use the native Node.js `fetch` implementation. `requestDefaults` remains available for backward compatibility and supports `headers`, `timeout`, `auth`, `qs`, `form`, `json`, `encoding`, `signal`, `dispatcher`, `followRedirect`, and `followAllRedirects`.
+
+Options specific to the deprecated `request` package, including `proxy`, `jar`, and `strictSSL`, are no longer supported. For advanced connection configuration, provide an Undici-compatible `dispatcher`.
+
+## Tests
+
+`npm test` runs the deterministic test suite. `npm run test:integration` additionally validates the bundled receipts against the live Apple, Amazon, and Microsoft services, so it requires network access and can fail when a store service or historical test certificate is unavailable.
 

@@ -349,7 +349,6 @@ describe('#### Google ####', function () {
         
     it('Can validate google in-app-purchase with public key as string "googlePublicKeyStrLive"', function (done) {
     
-        var exec = require('child_process').exec;    
         var path = process.argv[process.argv.length - 2].replace('--path=', '');
         var pkPath = process.argv[process.argv.length - 1].replace('--pk=', '');
 
@@ -388,7 +387,8 @@ describe('#### Google ####', function () {
                                 assert(data[i].purchaseDate);
                                 assert(data[i].quantity);
                             }
-                            exec('unset GOOGLE_IAB_PUBLICKEY_SANDBOX', done);
+                            delete process.env.GOOGLE_IAB_PUBLICKEY_SANDBOX;
+                            done();
                         });
                     });
                 });
@@ -399,7 +399,6 @@ describe('#### Google ####', function () {
         
     it('Can validate google in-app-purchase with public key as string "googlePublicKeyStrLive"', function (done) {
     
-        var exec = require('child_process').exec;    
         var path = process.argv[process.argv.length - 2].replace('--path=', '');
         var pkPath = process.argv[process.argv.length - 1].replace('--pk=', '');
 
@@ -438,7 +437,8 @@ describe('#### Google ####', function () {
                                 assert(data[i].purchaseDate);
                                 assert(data[i].quantity);
                             }
-                            exec('unset GOOGLE_IAB_PUBLICKEY_SANDBOX', done);
+                            delete process.env.GOOGLE_IAB_PUBLICKEY_SANDBOX;
+                            done();
                         });
                     });
                 });
@@ -453,7 +453,6 @@ describe('#### Google ####', function () {
         
     it('Can validate google in-app-purchase with public key from ENV variable', function (done) {
     
-        var exec = require('child_process').exec;    
         var path = process.argv[process.argv.length - 2].replace('--path=', '');
         var pkPath = process.argv[process.argv.length - 1].replace('--pk=', '');
 
@@ -487,7 +486,8 @@ describe('#### Google ####', function () {
                             assert(data[i].purchaseDate);
                             assert(data[i].quantity);
                         }
-                        exec('unset GOOGLE_IAB_PUBLICKEY_SANDBOX', done);
+                        delete process.env.GOOGLE_IAB_PUBLICKEY_SANDBOX;
+                        done();
                     });
                 });
             });
@@ -671,7 +671,6 @@ describe('#### Google ####', function () {
         
     it('Can validate Unity google in-app-purchase with dynamically fed public key', function (done) {
     
-        var exec = require('child_process').exec;    
         var path = process.cwd() + '/test/receipts/unity_google';
         var pkPath = process.argv[process.argv.length - 1].replace('--pk=', '');
 
@@ -707,7 +706,8 @@ describe('#### Google ####', function () {
                             assert(data[i].purchaseDate);
                             assert(data[i].quantity);
                         }
-                        exec('unset GOOGLE_IAB_PUBLICKEY_SANDBOX', done);
+                        delete process.env.GOOGLE_IAB_PUBLICKEY_SANDBOX;
+                        done();
                     });
                 });
             });
@@ -717,7 +717,6 @@ describe('#### Google ####', function () {
         
     it('Can validate google in-app-purchase with dynamically fed public key', function (done) {
     
-        var exec = require('child_process').exec;    
         var path = process.argv[process.argv.length - 2].replace('--path=', '');
         var pkPath = process.argv[process.argv.length - 1].replace('--pk=', '');
 
@@ -753,7 +752,8 @@ describe('#### Google ####', function () {
                             assert(data[i].purchaseDate);
                             assert(data[i].quantity);
                         }
-                        exec('unset GOOGLE_IAB_PUBLICKEY_SANDBOX', done);
+                        delete process.env.GOOGLE_IAB_PUBLICKEY_SANDBOX;
+                        done();
                     });
                 });
             });
