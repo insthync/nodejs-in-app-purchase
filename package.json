@@ -1,46 +1,51 @@
 {
- "name": "@insthync/nodejs-in-app-purchase",
- "description": "In-App-Purchase validation and subscription management for iOS, Android, Amazon, and Windows",
- "version": "1.14.1",
- "author": {
-  "name": "Nobuyori Takahashi,Ittipon Teerapruettikulchai",
-  "email": "voltrue2@yahoo.com,ittipon.bay@gmail.com"
- },
- "repository": {
-  "type": "git",
-  "url": "https://github.com/insthync/nodejs-in-app-purchase.git"
- },
- "dependencies": {
-  "xml-crypto": "6.1.2",
-  "@xmldom/xmldom": "0.9.10"
- },
- "devDependencies": {
-  "eslint": "10.7.0"
- },
- "scripts": {
-  "lint": "eslint lib index.js",
-  "test": "npm run lint && npm run test:unit",
-  "test:unit": "node --require ./test/node-test-shim.js --test test/fetch.js test/builtins.js && node --require ./test/node-test-shim.js --test --test-name-pattern=parse test/apple.js && node --require ./test/node-test-shim.js --test test/google.js && node --require ./test/node-test-shim.js --test --test-name-pattern=\"Can NOT|Can get an error\" test/windows.js",
-  "test:integration": "node --require ./test/node-test-shim.js --test test/apple.js && node --require ./test/node-test-shim.js --test test/amazon.js && node --require ./test/node-test-shim.js --test test/windows.js"
- },
- "engines": {
-  "node": ">=22.13.0"
- },
- "contributors": [],
- "keywords": [
-  "Apple",
-  "iOS",
-  "Android",
-  "Windows",
-  "Amazon",
-  "Roku",
-  "Purchase",
-  "Subscription",
-  "App",
-  "in-app-purchase",
-  "in-app-billing",
-  "Validation",
-  "IAP"
- ],
- "license": "MIT"
+    "name": "@insthync/nodejs-in-app-purchase",
+    "description": "In-App-Purchase validation and subscription management for iOS, Android, Amazon, and Windows",
+    "version": "1.14.1",
+    "author": {
+        "name": "Nobuyori Takahashi",
+        "email": "voltrue2@yahoo.com"
+    },
+    "contributors": [
+        {
+            "name": "Ittipon Teerapruettikulchai",
+            "email": "ittipon.bay@gmail.com"
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/insthync/nodejs-in-app-purchase.git"
+    },
+    "dependencies": {
+        "xml-crypto": "6.1.2",
+        "@xmldom/xmldom": "0.9.10"
+    },
+    "devDependencies": {
+        "eslint": "10.7.0"
+    },
+    "scripts": {
+        "lint": "eslint lib index.js",
+        "test": "npm run lint && npm run test:unit",
+        "test:unit": "node --require ./test/node-test-shim.js --test test/fetch.js test/builtins.js && node --require ./test/node-test-shim.js --test --test-name-pattern=parse test/apple.js && node --require ./test/node-test-shim.js --test test/google.js && node --require ./test/node-test-shim.js --test --test-name-pattern=\"Can NOT|Can get an error\" test/windows.js",
+        "test:integration": "node --require ./test/node-test-shim.js --test test/apple.js && node --require ./test/node-test-shim.js --test test/amazon.js && node --require ./test/node-test-shim.js --test test/windows.js"
+    },
+    "engines": {
+        "node": ">=22.13.0"
+    },
+    "keywords": [
+        "Apple",
+        "iOS",
+        "Android",
+        "Windows",
+        "Amazon",
+        "Roku",
+        "Purchase",
+        "Subscription",
+        "App",
+        "in-app-purchase",
+        "in-app-billing",
+        "Validation",
+        "IAP"
+    ],
+    "license": "MIT"
 }
